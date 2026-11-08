@@ -305,11 +305,19 @@ function renderTopologyMission() {
     "Netztopologie beschreibt die Anordnung; Client-Server beschreibt die Rollen.",
     "◉",
     `<p class="challenge-copy">Im Medienzentrum sind alle Endgeräte sternförmig an einen zentralen Switch angebunden. Fällt eine einzelne Leitung aus, betrifft das meist nur ein Gerät. Fällt der zentrale Switch aus, verlieren dagegen viele Geräte ihre Verbindung.</p>
-     <div class="network-diagram" aria-label="Sternförmiger Netzplan">
+     <div class="network-diagram" aria-label="Sternförmiger Netzplan mit Switch im Mittelpunkt">
+       <svg class="star-links" viewBox="0 0 1000 360" preserveAspectRatio="none" aria-hidden="true">
+         <line x1="500" y1="180" x2="170" y2="90"></line>
+         <line x1="500" y1="180" x2="170" y2="270"></line>
+         <line x1="500" y1="180" x2="830" y2="90"></line>
+         <line x1="500" y1="180" x2="830" y2="270"></line>
+         <circle cx="500" cy="180" r="12"></circle>
+       </svg>
        <div class="network-node client-a"><span class="node-symbol">▱</span><strong>Redaktions-PC</strong><small>fragt Webseiten an</small></div>
        <div class="network-node client-b"><span class="node-symbol">▱</span><strong>Tablet</strong><small>fragt Webseiten an</small></div>
        <div class="network-node switch"><span class="node-symbol">⌘</span><strong>Switch A</strong><small>verbindet Geräte</small></div>
-       <div class="network-node server"><span class="node-symbol">▥</span><strong>Web- &amp; Mailserver</strong><small>stellen Dienste bereit</small></div>
+       <div class="network-node server web-server"><span class="node-symbol">▥</span><strong>Webserver</strong><small>liefert Webseiten aus</small></div>
+       <div class="network-node server mail-server"><span class="node-symbol">✉</span><strong>Mailserver</strong><small>stellt das Postfach bereit</small></div>
      </div>
      <div class="explain-grid">
        <div class="explain-card"><span class="mini-label">TOPOLOGIE</span><h3>Physische oder logische Struktur</h3><p>Eine Sternstruktur verbindet alle Teilnehmer über einen zentralen Netzkoppler. Sie sagt zunächst noch nichts darüber, welches Programm eine Anfrage startet.</p></div>
