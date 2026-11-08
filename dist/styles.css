@@ -309,7 +309,18 @@ h2 { letter-spacing: -.025em; }
 .sequence-slot.filled { color: var(--ink); background: rgba(75,229,237,.05); border-style: solid; }
 .sequence-slot .sequence-item { margin: 0; padding: 8px; }
 
-.request-builder { margin-top: 24px; padding: 20px; background: #081421; border: 1px solid var(--line); border-radius: 16px; }
+.request-source { margin: 22px 0 16px; padding: 20px; background: linear-gradient(135deg, rgba(75,229,237,.09), rgba(16,30,50,.65)); border: 1px solid rgba(75,229,237,.28); border-radius: 16px; }
+.request-source > code { display: flex; align-items: stretch; margin: 14px 0 12px; overflow-x: auto; color: var(--ink); background: #07111f; border: 1px solid var(--line); border-radius: 11px; font-size: clamp(.78rem, 2vw, 1rem); white-space: nowrap; }
+.request-source > code span, .request-source > code strong, .request-source > code mark { padding: 13px 2px; }
+.request-source > code span { padding-left: 13px; color: var(--muted); font-weight: 500; }
+.request-source > code strong { color: var(--cyan); }
+.request-source > code mark { padding-right: 13px; color: var(--amber); background: transparent; font-weight: 800; }
+.request-source > p { margin: 12px 0 0; color: var(--muted); line-height: 1.55; }
+.url-legend { display: flex; gap: 15px; flex-wrap: wrap; color: var(--muted); font-size: .7rem; }
+.url-legend span { display: inline-flex; gap: 6px; align-items: center; }
+.url-legend i { width: 8px; height: 8px; border-radius: 50%; }
+.scheme-key { background: var(--muted); }.host-key { background: var(--cyan); }.path-key { background: var(--amber); }
+.request-builder { margin-top: 16px; padding: 20px; background: #081421; border: 1px solid var(--line); border-radius: 16px; }
 .request-line { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
 .request-line select, .request-line input { min-height: 42px; padding: 8px 11px; color: var(--ink); background: #101f34; border: 1px solid var(--line); border-radius: 9px; }
 .request-line input { flex: 1; min-width: 200px; }

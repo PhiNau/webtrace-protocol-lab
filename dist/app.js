@@ -37,7 +37,7 @@ const missions = [
     lead: "Baue den Weg von der URL bis zur dargestellten Website auf und sende anschließend selbst eine korrekte HTTP-Anfrage.",
     summary: "DNS, Verbindung, HTTP-Anfrage, Serverantwort und Browserdarstellung in eine sinnvolle Reihenfolge bringen.",
     tags: ["DNS", "GET", "Response"],
-    hint: "Jeder Schritt benötigt Informationen aus dem vorherigen: Erst muss das Ziel bekannt sein, dann entsteht die Verbindung, dann kann die Anfrage reisen.",
+    hint: "Jeder Schritt benötigt Informationen aus dem vorherigen. Beim Request-Builder gilt: Alles hinter dem Hostnamen – beginnend mit / – ist der Ressourcenpfad.",
   },
   {
     title: "Offener Kanal oder sichere Verbindung?",
@@ -474,11 +474,17 @@ function checkSequence() {
 function renderRequestBuilder() {
   runtime.requestStage = true;
   document.querySelector("#web-challenge-interactive").innerHTML = `
-    <p class="challenge-copy">Der Browser soll die Startdatei der Ausstellung abrufen. Ergänze eine gültige HTTP/1.1-Anfrage an <code>museum.local</code>.</p>
+    <p class="challenge-copy">Der Browser soll genau die unten angegebene Zieladresse abrufen. Lies Methode, Host und Ressourcenpfad aus dem Auftrag ab und übertrage sie in die HTTP/1.1-Anfrage.</p>
+    <div class="request-source" aria-label="Auftragskarte mit vollständiger Zieladresse">
+      <span class="mini-label">AUFTRAGSKARTE · VOLLSTÄNDIGE ZIELADRESSE</span>
+      <code><span>https://</span><strong>museum.local</strong><mark>/ausstellung/index.html</mark></code>
+      <div class="url-legend"><span><i class="scheme-key"></i>Schema</span><span><i class="host-key"></i>Host</span><span><i class="path-key"></i>Ressourcenpfad</span></div>
+      <p>Für das Pfadfeld übernimmst du den farbig markierten Teil ab dem ersten <strong>/</strong> hinter dem Hostnamen.</p>
+    </div>
     <div class="request-builder">
       <div class="request-line">
         <select id="request-method" aria-label="HTTP-Methode"><option>POST</option><option>GET</option><option>DELETE</option></select>
-        <input id="request-path" aria-label="Ressourcenpfad" value="/" />
+        <input id="request-path" aria-label="Ressourcenpfad" value="/" placeholder="Pfad aus der Zieladresse" />
         <strong>HTTP/1.1</strong>
       </div>
       <div class="request-line" style="margin-top:12px"><strong>Host:</strong><input id="request-host" aria-label="Host-Header" placeholder="Hostname" /></div>
@@ -491,7 +497,7 @@ function renderRequestBuilder() {
     if (method === "GET" && path === "/ausstellung/index.html" && host === "museum.local") {
       completeMission(1, "HTTP/1.1 200 OK – Beweis gesichert: Der Client hat eine vollständige Anfrage formuliert und der Server liefert die Startdatei.");
     } else {
-      feedback("Der Server kann diese Anfrage noch nicht eindeutig zuordnen. Prüfe Methode, vollständigen Ressourcenpfad und Hostnamen.", "error");
+      feedback("Der Server kann diese Anfrage noch nicht eindeutig zuordnen. Vergleiche Methode, Host und den Teil ab dem ersten / mit der Auftragskarte.", "error");
     }
   });
 }
